@@ -5,8 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Surya Raja Mandapalli | Portfolio</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- GOOGLE FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- BOOTSTRAP ICONS -->
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
   <style>
 
@@ -18,18 +22,35 @@
     }
 
     :root{
+
       --bg:#050505;
-      --card:#0d0d0d;
+      --secondary:#0f0f0f;
+      --card:#111111;
+      --text:#ffffff;
+      --sub:#b9b9b9;
       --border:rgba(255,255,255,0.08);
-      --white:#ffffff;
-      --gray:#a8a8a8;
+      --glow:rgba(255,255,255,0.5);
+
+    }
+
+    body.light{
+
+      --bg:#f5f5f5;
+      --secondary:#ffffff;
+      --card:#ffffff;
+      --text:#111111;
+      --sub:#444444;
+      --border:rgba(0,0,0,0.08);
+      --glow:rgba(0,0,0,0.25);
+
     }
 
     body{
       font-family:'Space Grotesk',sans-serif;
       background:var(--bg);
-      color:white;
+      color:var(--text);
       overflow-x:hidden;
+      transition:0.4s;
     }
 
     /* GRID BACKGROUND */
@@ -38,9 +59,11 @@
       content:"";
       position:fixed;
       inset:0;
+
       background:
-      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+
       background-size:45px 45px;
       z-index:-3;
     }
@@ -51,10 +74,10 @@
       width:700px;
       height:700px;
       border-radius:50%;
-      background:radial-gradient(circle, rgba(255,255,255,0.14), transparent 70%);
-      top:-250px;
-      right:-200px;
-      filter:blur(60px);
+      background:radial-gradient(circle, var(--glow), transparent 70%);
+      top:-200px;
+      right:-150px;
+      filter:blur(70px);
       z-index:-2;
     }
 
@@ -65,45 +88,76 @@
       position:fixed;
       top:0;
       left:0;
-      padding:22px 8%;
+      z-index:1000;
+
       display:flex;
       justify-content:space-between;
       align-items:center;
-      background:rgba(0,0,0,0.45);
-      backdrop-filter:blur(10px);
+
+      padding:20px 8%;
+
+      background:rgba(0,0,0,0.25);
+      backdrop-filter:blur(12px);
+
       border-bottom:1px solid var(--border);
-      z-index:1000;
+    }
+
+    body.light nav{
+      background:rgba(255,255,255,0.7);
     }
 
     .logo{
-      font-size:1.3rem;
+      font-size:1.4rem;
       font-weight:700;
       letter-spacing:3px;
-      color:white;
-      text-transform:uppercase;
-      text-shadow:0 0 15px rgba(255,255,255,0.8);
+      text-shadow:0 0 15px var(--glow);
     }
 
     nav ul{
       display:flex;
-      gap:35px;
+      gap:30px;
       list-style:none;
     }
 
     nav ul li a{
+      color:var(--text);
       text-decoration:none;
-      color:#d4d4d4;
-      transition:0.3s;
       font-size:0.95rem;
-      position:relative;
+      transition:0.3s;
     }
 
     nav ul li a:hover{
-      color:white;
-      text-shadow:0 0 10px white;
+      text-shadow:0 0 10px var(--glow);
     }
 
-    /* HERO SECTION */
+    .toggle{
+      width:60px;
+      height:32px;
+      border-radius:40px;
+      background:var(--card);
+      border:1px solid var(--border);
+      cursor:pointer;
+      position:relative;
+      display:flex;
+      align-items:center;
+      padding:5px;
+      transition:0.4s;
+    }
+
+    .toggle-circle{
+      width:22px;
+      height:22px;
+      border-radius:50%;
+      background:var(--text);
+      transition:0.4s;
+      transform:translateX(0);
+    }
+
+    body.light .toggle-circle{
+      transform:translateX(27px);
+    }
+
+    /* HERO */
 
     .hero{
       min-height:100vh;
@@ -113,146 +167,162 @@
     }
 
     .hero-container{
-      width:100%;
       display:grid;
       grid-template-columns:1.2fr 1fr;
-      gap:70px;
+      gap:60px;
+      width:100%;
       align-items:center;
     }
 
     .hero-left h3{
-      color:#d8d8d8;
-      font-weight:400;
-      letter-spacing:2px;
+      color:var(--sub);
       margin-bottom:15px;
+      letter-spacing:2px;
+      font-weight:400;
     }
 
     .hero-left h1{
-      font-size:5.2rem;
+      font-size:5rem;
       line-height:1;
-      margin-bottom:25px;
+      margin-bottom:20px;
       text-transform:uppercase;
-      text-shadow:
-      0 0 15px rgba(255,255,255,0.8),
-      0 0 35px rgba(255,255,255,0.25);
+      text-shadow:0 0 20px var(--glow);
     }
 
     .hero-left h1 span{
       display:block;
-      color:#cfcfcf;
-      font-size:2.4rem;
-      margin-top:12px;
+      font-size:2rem;
+      margin-top:10px;
+      color:var(--sub);
       font-weight:400;
-      letter-spacing:3px;
     }
 
     .slogan{
-      font-size:1.25rem;
-      color:white;
+      font-size:1.3rem;
       margin-bottom:30px;
       font-weight:600;
-      letter-spacing:1px;
-      text-shadow:0 0 12px rgba(255,255,255,0.5);
+      text-shadow:0 0 10px var(--glow);
     }
 
     .hero-left p{
-      color:var(--gray);
       line-height:1.9;
+      color:var(--sub);
+      margin-bottom:35px;
       max-width:700px;
-      margin-bottom:40px;
-      font-size:1rem;
     }
 
     .buttons{
       display:flex;
-      flex-wrap:wrap;
       gap:18px;
+      flex-wrap:wrap;
     }
 
     .btn{
-      padding:15px 32px;
-      border-radius:16px;
+      padding:15px 30px;
+      border-radius:15px;
       text-decoration:none;
-      color:white;
-      border:1px solid rgba(255,255,255,0.15);
-      background:rgba(255,255,255,0.03);
+      color:var(--text);
+      background:var(--card);
+      border:1px solid var(--border);
       transition:0.35s;
-      backdrop-filter:blur(10px);
-      box-shadow:0 0 12px rgba(255,255,255,0.06);
+      box-shadow:0 0 12px rgba(255,255,255,0.05);
     }
 
     .btn:hover{
       transform:translateY(-5px);
       box-shadow:
-      0 0 20px rgba(255,255,255,0.35),
-      0 0 40px rgba(255,255,255,0.12);
+      0 0 20px var(--glow),
+      0 0 35px rgba(255,255,255,0.08);
     }
 
-    /* HERO CARD */
+    /* CARD */
 
     .hero-card{
-      background:rgba(255,255,255,0.03);
+      background:var(--secondary);
       border:1px solid var(--border);
-      border-radius:32px;
-      padding:40px;
-      backdrop-filter:blur(14px);
-      position:relative;
-      overflow:hidden;
-      box-shadow:0 0 30px rgba(255,255,255,0.05);
-    }
-
-    .hero-card::before{
-      content:"";
-      position:absolute;
-      width:350px;
-      height:350px;
-      background:radial-gradient(circle, rgba(255,255,255,0.12), transparent 70%);
-      top:-120px;
-      right:-100px;
+      border-radius:30px;
+      padding:35px;
+      backdrop-filter:blur(10px);
+      box-shadow:0 0 25px rgba(255,255,255,0.04);
     }
 
     .hero-card h2{
-      font-size:2rem;
       margin-bottom:25px;
-      text-shadow:0 0 10px rgba(255,255,255,0.4);
+      font-size:2rem;
     }
 
     .card-box{
       padding:22px;
       border-radius:20px;
-      background:rgba(255,255,255,0.025);
-      border:1px solid rgba(255,255,255,0.07);
+      background:var(--card);
+      border:1px solid var(--border);
       margin-bottom:18px;
       transition:0.35s;
     }
 
     .card-box:hover{
       transform:translateY(-4px);
-      box-shadow:0 0 18px rgba(255,255,255,0.08);
+      box-shadow:0 0 20px rgba(255,255,255,0.08);
     }
 
     .card-box h4{
       margin-bottom:10px;
-      font-size:1.1rem;
     }
 
     .card-box p{
-      color:#bbbbbb;
+      color:var(--sub);
       line-height:1.7;
-      font-size:0.94rem;
     }
 
-    /* SECTION */
+    /* SECTIONS */
 
     section{
       padding:100px 8%;
     }
 
     .section-title{
-      font-size:3.2rem;
+      font-size:3rem;
       margin-bottom:60px;
-      text-transform:uppercase;
-      text-shadow:0 0 15px rgba(255,255,255,0.3);
+      text-shadow:0 0 12px var(--glow);
+    }
+
+    /* SKILLS */
+
+    .skills-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .skill{
+      background:var(--secondary);
+      border:1px solid var(--border);
+      padding:30px;
+      border-radius:24px;
+      text-align:center;
+      transition:0.35s;
+    }
+
+    .skill:hover{
+      transform:translateY(-8px);
+      box-shadow:0 0 25px rgba(255,255,255,0.12);
+    }
+
+    .skill i{
+      font-size:3rem;
+      margin-bottom:18px;
+      display:block;
+      text-shadow:0 0 18px var(--glow);
+    }
+
+    .skill h3{
+      margin-bottom:12px;
+    }
+
+    .skill p{
+      color:var(--sub);
+      line-height:1.7;
+      font-size:0.94rem;
     }
 
     /* PROJECTS */
@@ -264,78 +334,64 @@
     }
 
     .project{
-      background:rgba(255,255,255,0.03);
+      background:var(--secondary);
       border:1px solid var(--border);
-      border-radius:28px;
       padding:35px;
+      border-radius:28px;
       transition:0.4s;
-      position:relative;
-      overflow:hidden;
     }
 
     .project:hover{
       transform:translateY(-8px);
-      box-shadow:
-      0 0 22px rgba(255,255,255,0.12);
+      box-shadow:0 0 25px rgba(255,255,255,0.1);
     }
 
     .project h3{
-      font-size:1.5rem;
       margin-bottom:15px;
+      font-size:1.5rem;
     }
 
     .project p{
-      color:#bdbdbd;
+      color:var(--sub);
       line-height:1.8;
       margin-bottom:20px;
     }
 
     .project a{
-      color:white;
       text-decoration:none;
+      color:var(--text);
       font-weight:600;
-      text-shadow:0 0 10px white;
     }
 
-    /* ABOUT */
+    /* HOBBIES */
 
-    .about-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:25px;
+    .hobbies{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
     }
 
-    .about-box{
-      background:rgba(255,255,255,0.03);
+    .hobby{
+      padding:16px 22px;
+      background:var(--secondary);
       border:1px solid var(--border);
-      padding:30px;
-      border-radius:24px;
-      transition:0.35s;
+      border-radius:16px;
+      transition:0.3s;
     }
 
-    .about-box:hover{
-      transform:translateY(-6px);
-      box-shadow:0 0 20px rgba(255,255,255,0.08);
-    }
-
-    .about-box h3{
-      margin-bottom:15px;
-      font-size:1.3rem;
-    }
-
-    .about-box p{
-      color:#bcbcbc;
-      line-height:1.8;
+    .hobby:hover{
+      transform:translateY(-4px);
+      box-shadow:0 0 18px rgba(255,255,255,0.08);
     }
 
     /* FOOTER */
 
     footer{
-      text-align:center;
       padding:50px 8%;
-      border-top:1px solid rgba(255,255,255,0.08);
-      color:#8c8c8c;
-      margin-top:50px;
+      text-align:center;
+      border-top:1px solid var(--border);
+      color:var(--sub);
+      margin-top:40px;
     }
 
     /* RESPONSIVE */
@@ -352,38 +408,32 @@
 
     }
 
-    @media(max-width:650px){
-
-      nav{
-        padding:20px 5%;
-      }
+    @media(max-width:700px){
 
       nav ul{
         display:none;
       }
 
-      .hero{
-        padding:120px 5% 80px;
+      nav{
+        padding:20px 5%;
       }
 
+      .hero,
       section{
-        padding:90px 5%;
+        padding-left:5%;
+        padding-right:5%;
       }
 
       .hero-left h1{
-        font-size:2.9rem;
+        font-size:2.8rem;
       }
 
       .hero-left h1 span{
-        font-size:1.3rem;
+        font-size:1.2rem;
       }
 
       .section-title{
         font-size:2.2rem;
-      }
-
-      .slogan{
-        font-size:1rem;
       }
 
     }
@@ -397,16 +447,20 @@
 
   <nav>
 
-    <div class="logo">
-      SRM.
-    </div>
+    <div class="logo">SRM.</div>
 
     <ul>
       <li><a href="#home">Home</a></li>
+      <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#hobbies">Hobbies</a></li>
     </ul>
+
+    <!-- THEME TOGGLE -->
+
+    <div class="toggle" onclick="toggleTheme()">
+      <div class="toggle-circle"></div>
+    </div>
 
   </nav>
 
@@ -430,48 +484,127 @@
         </div>
 
         <p>
-          Computer Science Engineering student, full-stack developer,
-          AI enthusiast, hackathon builder, music composer, and futuristic
-          creator focused on building next-generation digital experiences.
-          Passionate about AI, Web Development, Quantum Computing,
-          and innovative problem-solving.
+          Dedicated Computer Science Engineering student passionate
+          about futuristic technology, AI systems, quantum computing,
+          web engineering and creative digital experiences.
+          Building next-level solutions with innovation, discipline
+          and creativity.
         </p>
 
         <div class="buttons">
-          <a href="#" class="btn">Explore Projects</a>
-          <a href="#" class="btn">Hire Me</a>
+
+          <a href="#" class="btn">
+            Explore Projects
+          </a>
+
+          <a href="#" class="btn">
+            Contact Me
+          </a>
+
         </div>
 
       </div>
+
+      <!-- RIGHT CARD -->
 
       <div class="hero-card">
 
         <h2>About Me</h2>
 
         <div class="card-box">
-          <h4>Development</h4>
+          <h4>AI & Development</h4>
+
           <p>
-            Skilled in Full-Stack Development with experience in
-            React, Node.js, PostgreSQL, Web3 and modern UI systems.
+            Skilled in React, Node.js, PostgreSQL, Web3,
+            Qiskit, AI systems and futuristic UI engineering.
           </p>
         </div>
 
         <div class="card-box">
-          <h4>Hackathons & Innovation</h4>
+          <h4>Hackathons</h4>
+
           <p>
-            Built AI-powered projects and participated in major
-            hackathons including SIH and Quantum Valley Hackathon.
+            Participated in Smart India Hackathon,
+            Quantum Valley Hackathon and multiple
+            national innovation contests.
           </p>
         </div>
 
         <div class="card-box">
-          <h4>Creative Side</h4>
+          <h4>Creative Identity</h4>
+
           <p>
-            Guitarist, pianist, bassist and music producer who combines
-            creativity with futuristic technology.
+            Music producer, guitarist, pianist and
+            technology creator blending art with engineering.
           </p>
         </div>
 
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SKILLS -->
+
+  <section id="skills">
+
+    <h2 class="section-title">Skills</h2>
+
+    <div class="skills-grid">
+
+      <div class="skill">
+        <i class="bi bi-code-slash"></i>
+        <h3>Full Stack</h3>
+        <p>
+          React, Node.js, APIs, Backend Systems
+          and Responsive Web Applications.
+        </p>
+      </div>
+
+      <div class="skill">
+        <i class="bi bi-cpu"></i>
+        <h3>AI / ML</h3>
+        <p>
+          AI systems, OCR, intelligent automation
+          and smart problem solving.
+        </p>
+      </div>
+
+      <div class="skill">
+        <i class="bi bi-globe2"></i>
+        <h3>Web3</h3>
+        <p>
+          Blockchain apps, DApps,
+          decentralized technologies and Web3 systems.
+        </p>
+      </div>
+
+      <div class="skill">
+        <i class="bi bi-lightning-charge"></i>
+        <h3>Quantum Tech</h3>
+        <p>
+          IBM Qiskit, Quantum frameworks
+          and emerging quantum computing systems.
+        </p>
+      </div>
+
+      <div class="skill">
+        <i class="bi bi-music-note-beamed"></i>
+        <h3>Music Production</h3>
+        <p>
+          Guitar, piano, bass guitar,
+          FL Studio and cinematic music creation.
+        </p>
+      </div>
+
+      <div class="skill">
+        <i class="bi bi-palette"></i>
+        <h3>UI/UX Design</h3>
+        <p>
+          Futuristic interfaces, glassmorphism,
+          neon aesthetics and modern UI systems.
+        </p>
       </div>
 
     </div>
@@ -491,9 +624,8 @@
         <h3>SkillPath AI</h3>
 
         <p>
-          AI-powered personalized learning path generator developed
-          for Smart India Hackathon with intelligent career guidance
-          and adaptive learning systems.
+          AI-powered personalized learning
+          path generator developed for SIH.
         </p>
 
         <a href="#">View Project →</a>
@@ -505,8 +637,8 @@
         <h3>Quantum Jobs Tracker</h3>
 
         <p>
-          Real-time quantum computing jobs tracking platform built
-          using IBM Quantum technologies and Qiskit frameworks.
+          Live quantum jobs tracking platform
+          powered by IBM Quantum technologies.
         </p>
 
         <a href="#">View Project →</a>
@@ -518,8 +650,8 @@
         <h3>AI Legal Assistant</h3>
 
         <p>
-          AI-powered legal aid system that provides legal guidance,
-          case references and judgement assistance for users.
+          Intelligent legal aid system
+          with AI-powered judgement assistance.
         </p>
 
         <a href="#">View Project →</a>
@@ -530,46 +662,29 @@
 
   </section>
 
-  <!-- ABOUT -->
+  <!-- HOBBIES -->
 
-  <section id="about">
+  <section id="hobbies">
 
-    <h2 class="section-title">Core Identity</h2>
+    <h2 class="section-title">Hobbies & Interests</h2>
 
-    <div class="about-grid">
+    <div class="hobbies">
 
-      <div class="about-box">
+      <div class="hobby">🚀 Space Exploration</div>
 
-        <h3>Mission</h3>
+      <div class="hobby">🎸 Guitar & Piano</div>
 
-        <p>
-          Building futuristic technology solutions that combine
-          intelligence, creativity and innovation.
-        </p>
+      <div class="hobby">🎧 Music Production</div>
 
-      </div>
+      <div class="hobby">💻 Coding & Hackathons</div>
 
-      <div class="about-box">
+      <div class="hobby">🏍 Retro Bikes</div>
 
-        <h3>Vision</h3>
+      <div class="hobby">🚗 Classic Cars</div>
 
-        <p>
-          To become an elite software engineer and work on
-          global-level technology innovations.
-        </p>
+      <div class="hobby">⚛ Quantum Computing</div>
 
-      </div>
-
-      <div class="about-box">
-
-        <h3>Interests</h3>
-
-        <p>
-          AI, Quantum Computing, Space Exploration,
-          Music Production, Retro Machines and UI Engineering.
-        </p>
-
-      </div>
+      <div class="hobby">🎨 Futuristic UI Design</div>
 
     </div>
 
@@ -577,13 +692,23 @@
 
   <!-- FOOTER -->
 
-  <footer id="contact">
+  <footer>
 
-    <p>
-      © 2026 Surya Raja Mandapalli • Code is my Commitment ⚡
-    </p>
+    © 2026 Surya Raja Mandapalli • Code is my Commitment ⚡
 
   </footer>
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    function toggleTheme(){
+
+      document.body.classList.toggle("light");
+
+    }
+
+  </script>
 
 </body>
 </html>
